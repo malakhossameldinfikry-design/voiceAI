@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --color-void: #060e1a;
+  --color-surface: #0b1628;
+  --color-panel: #0f1e35;
+  --color-panel2: #132340;
+  --color-border: rgba(99,160,255,0.1);
+  --color-border2: rgba(99,160,255,0.18);
+  --color-muted: rgba(160,200,255,0.45);
+  --color-text: rgba(220,237,255,0.92);
+  --color-accent: #3b82f6;
+  --color-accent-soft: rgba(59,130,246,0.14);
+  --color-accent-glow: rgba(59,130,246,0.4);
+  --color-accent2: #60a5fa;
+  --color-sky: #38bdf8;
+  --color-sky-soft: rgba(56,189,248,0.12);
+  --color-green: #34d399;
+  --color-red: #f87171;
+  --font-sans: 'Outfit', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-void);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(59,130,246,0.2); border-radius: 2px; }
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.7; }
+  100% { transform: scale(1.65); opacity: 0; }
+}
+
+@keyframes wave-bar {
+  0%, 100% { transform: scaleY(0.25); }
+  50% { transform: scaleY(1); }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes voicenote-play {
+  0%, 100% { transform: scaleY(0.4); }
+  50% { transform: scaleY(1); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.wave-bar {
+  animation: wave-bar var(--duration, 0.8s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+.pulse-ring {
+  animation: pulse-ring 1.8s ease-out infinite;
+}
+
+.message-in {
+  animation: fade-in-up 0.3s ease-out forwards;
+}
+
+.thinking-shimmer {
+  background: linear-gradient(90deg, var(--color-muted) 25%, rgba(160,200,255,0.9) 50%, var(--color-muted) 75%);
+  background-size: 200% auto;
+  animation: shimmer 1.4s linear infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.vn-bar {
+  animation: voicenote-play var(--vn-dur, 0.7s) ease-in-out infinite;
+  animation-delay: var(--vn-delay, 0s);
+  animation-play-state: var(--vn-state, paused);
+}
